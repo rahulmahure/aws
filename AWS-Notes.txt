@@ -1,0 +1,235 @@
+--->Website Deployment
+Step#1 create server
+Step#2 connect to the server
+Step#3 install web service(yum install http* -y)
+Step#4 enable the http port(service httpd restart)
+Step#5 start the web service(service httpd restart)
+Step#6 need to copy the website to /var/www/html
+----------------------------------------------------------------------------------------------------------
+https://policysim.aws.amazon.com/home/index.jsp?#
+https://awspolicygen.s3.amazonaws.com/policygen.html
+http://status.aws.amazon.com/
+https://aws.amazon.com/free/
+https://aws.amazon.com/ec2/pricing/
+---------------------------------------------------------------------------------------------------------
+stress --cpu 8 --io 4 --vm 2 --hdd 4 --timeout 120s --verbose
+---------------------------------------------------------------------------------------------------------
+aws s3 cp /apps s3://kvreddi/ --recursive
+aws s3 cp . s3://kvreddi/d10 --recursive
+aws s3 cp s3://kvreddi/d10 /apps --recursive
+aws s3 sync . s3://kvreddi/logs
+-------------------------------------------------------------------------------------------------------------------------------------
+-->SSM Agent Installation
+step#1
+#!/bin/bash
+cd /tmp
+sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+systemctl start amazon-ssm-agent
+
+step#2
+Need to enable the ssm agent
+Select the server-->Actions--->Instance settings--->attach ssm role.
+
+Step#3 
+Need to restart the service
+#systemctl status amazon-ssm-agent
+#systemctl start amazon-ssm-agent
+-------------------------------------------------------------------------------------------------------------------------------------
+From Linux 
+yum install java* -y
+
+From Win
+Get-service |Where {$ _. Eq Status 'running'} | Select displayname | Out-File C:\desktop\test.txt
+
+Get-service >C:\Users\Administrator\b.txt
+-------------------------------------------------------------------------------------------------------------------------------------
+aws ssm send-command --document-name "AWS-RunShellScript" --instance-ids "i-099277195351bfe04" --parameters '{"commands":["cd /tmp","touch a b c d","yum install httpd -y"],"workingDirectory":["/tmp"]}' --comment "test" --timeout-seconds 600 --region us-east-1
+-------------------------------------------------------------------------------------------------------------------------------------
+aws ssm send-command --document-name "AWS-UpdateSSMAgent" --instance-ids "i-02daa491e7de51157" "i-02c311c947eb9c6a4" --parameters '{"allowDowngrade":["false"]}' --timeout-seconds 600 --region us-east-1
+------------------------------------------------------------------------------------------------------------------------------------
+FROM node:carbon
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD [ "npm", "start" ]
+------------------------------------------------------------------------------------------------------------------------------------
+#!/bin/bash
+yum install httpd -y
+yum update -y
+aws s3 cp s3://YOURBUCKETNAMEHERE/index.html /var/www/html/
+/bin/systemctl start httpd.service
+chkconfig httpd on
+
+#!/bin/bash
+yum install httpd -y
+yum update -y
+/bin/systemctl start httpd.service
+chkconfig httpd on
+-------------------------------------------------------------------------------------------------------------------------------------
+<powershell>
+Rename-computer -Newname 2012R2Test
+</powershell>
+------------------------------------------------------------------------------------------------------------------------
+#!/bin/bash
+yum install httpd -y
+yum update -y
+/bin/systemctl start httpd.service
+chkconfig httpd on
+echo "<html><h1>Hello Cloud Gurus!</h1></html>" > /var/www/html/index.html
+------------------------------------------------------------------------------------------------------------
+
+DB Notes
+select name from v$database;
+create table test (name varchar2(30));
+insert into test values ('suvenit');
+commit
+select table_name from all_tables;
+select table_name from alL_tables where table_name='TEST';
+select username from dba_users;
+select instance_name from v$instance;
+--------------------------------------------------------------------
+Install MySQL 8.0
+On EC2 instance
+
+rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+yum repolist all | grep mysql | grep enabled
+yum -y install mysql-community-server
+--------------------------------------
+Install MySQL 5.7
+yum -y install mysql-community-server --disablerepo=mysql80-community --enablerepo=mysql57-community
+-----------------------------------------------------------------------------------------------------
+yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+------------------------------------------------------------------------------------------------------
+systemctl start mysqld
+systemctl enable mysqld
+netstat -plntu
+mysql -u root
+
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+grep 'temporary password' /var/log/mysqld.log
+
+mysql -u root -p
+
+SET PASSWORD = PASSWORD('W3lcome@123');
+
+SET PASSWORD = 'W3lcome@123';       for 8
+
+SET PASSWORD [FOR root] auth_option
+    [REPLACE 'current_auth_string']
+    [RETAIN CURRENT PASSWORD]
+---------------------------------------
+CREATE DATABASE employe;
+SHOW DATABASES;
+use employe;
+
+create table salary(emp_no INT, name VARCHAR(100), Salary INT);
+show tables;
+
+desc salary;
+
+insert into salary(emp_no,name,Salary) VALUES (01, "Mike", 8000);
+insert into salary(emp_no,name,Salary) VALUES (02, "kv", 7000);
+
+select * from salary;
+-------------------------------------------------------------------------
+CREATE DATABASE student;
+SHOW DATABASES;
+use student;
+
+create table marks(sno INT, name VARCHAR(100), marks INT);
+show tables;
+
+desc marks;
+
+insert into marks(sno,name,marks) VALUES (01, "Mike", 80);
+insert into marks(sno,name,marks) VALUES (05, "kvr1", 98);
+
+select * from marks;
+----------------------------------------------------------------------------
+Create rds instance with mysql DB
+
+connect to rds DB
+mysql -h database-1.cbxe5amlbbko.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+
+CREATE DATABASE employe;
+SHOW DATABASES;
+use employe;
+
+create table salary(emp_no INT, name VARCHAR(100), Salary INT);
+show tables;
+
+desc salary;
+
+select * from salary;
+----------------------------------------------------
+mysqldump --databases employe -r backup.sql -u root -p
+
+mysql -h database-1.cbxe5amlbbko.us-east-1.rds.amazonaws.com -u admin -p employe < backup.sql
+
+mysql -h database-1.cbxe5amlbbko.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+
+SHOW DATABASES;
+use employe;
+desc salary;
+
+select * from salary;
+----------------------------------------------------------------------------------
+
+Note:
+arn:aws:iam::584446746676:role/dms
+--------------------------------------------
+drop table on target
+don't include LOB
+
+mysqldump -u root --databases employe -pW3lcome@123 | mysql -u admin --port=3306 --host=database-1.cbxe5amlbbko.us-east-1.rds.amazonaws.com -p W3lcome123
+
+==================================================================================================
+Postgres
+----------
+yum install mysql-community-client.x86_64 mysql-community-devel.x86_64 mysql-community-server.x86_64 postgresql postgresql-devel postgresql-libs
+yum install postgresql-server
+postgresql-setup initdb
+systemctl enable postgresql.service
+systemctl status postgresql.service
+/usr/bin/createdb test
+------------------------
+$/usr/bin/createdb employee
+$ psql
+\c employee
+-------------------------------
+CREATE TABLE salary(
+    name text,
+    Salary numeric
+);
+------------------------------------------------
+INSERT INTO salary VALUES ('mike', 8000);
+INSERT INTO salary VALUES ('ravi', 9000);
+
+select * from salary
+
+pg_dump -U postgres dbname=employee -f pgexpdump.sql
+
+psql -f pgexpdump.sql --host=appsdb.cbxe5amlbbko.us-east-1.rds.amazonaws.com --port=5432 --username postgres --dbname appdb
+
+------------------------------------------------------------------------
+Connect to aws postgres database
+
+psql --host=apps.cbxe5amlbbko.us-east-1.rds.amazonaws.com --port=5432 --username=postgres --password
+
+\l
+create database employee;
+
+CREATE TABLE salary(
+    name text,
+    Salary numeric
+);
+
+select * from salary
+
+select * from salary
+
+##########################################################################################################
+
