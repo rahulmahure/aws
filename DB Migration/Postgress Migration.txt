@@ -1,0 +1,48 @@
+Postgres
+----------
+yum install mysql-community-client.x86_64 mysql-community-devel.x86_64 mysql-community-server.x86_64 postgresql postgresql-devel postgresql-libs
+yum install postgresql-server
+postgresql-setup initdb
+systemctl enable postgresql.service
+systemctl status postgresql.service
+/usr/bin/createdb test
+------------------------
+$/usr/bin/createdb employee
+$ psql
+\c employee
+-------------------------------
+CREATE TABLE salary(
+    name text,
+    Salary numeric
+);
+------------------------------------------------
+INSERT INTO salary VALUES ('mike', 8000);
+INSERT INTO salary VALUES ('ravi', 9000);
+
+select * from salary
+
+pg_dump -U postgres dbname=employee -f pgexpdump.sql
+
+
+
+------------------------------------------------------------------------
+Connect to aws postgres database
+
+psql --host=database-2.cbxe5amlbbko.us-east-1.rds.amazonaws.com --port=5432 --username=postgres --password
+
+\l
+create database employee;
+
+CREATE TABLE salary(
+    name text,
+    Salary numeric
+);
+
+select * from salary
+
+psql -f pgexpdump.sql --host=apps.cbxe5amlbbko.us-east-1.rds.amazonaws.com --port=5432 --username postgres --dbname appdb
+
+select * from salary
+
+##########################################################################################################
+
