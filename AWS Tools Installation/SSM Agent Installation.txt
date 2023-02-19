@@ -1,0 +1,15 @@
+SSM Agent Installation
+step#1
+#!/bin/bash
+cd /tmp
+sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+systemctl start amazon-ssm-agent
+
+step#2
+Need to enable the ssm agent
+Select the server-->Actions--->Instance settings--->attach ssm role.
+
+Step#3 
+Need to restart the service
+#systemctl status amazon-ssm-agent
+#systemctl start amazon-ssm-agent
