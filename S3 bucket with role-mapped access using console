@@ -1,0 +1,62 @@
+S3 bucket with role-mapped access using console
+
+steps to create an S3 bucket with role-mapped access using the AWS Management Console:
+
+Step 1: Create an IAM Role
+
+Go to the IAM service in the AWS Management Console.
+Click on "Roles" in the left navigation pane.
+Click on "Create role" to start creating a new IAM role.
+Select the service that will use this role (in this case, choose "S3") and click "Next: Permissions".
+In the "Attach permissions policies" step, search for and select the policies you want to attach to the role (e.g., "AmazonS3FullAccess").
+Click "Next: Tags" to optionally add tags to the role.
+Click "Next: Review".
+Provide a name for the role (e.g., "s3-access-role") and an optional description.
+Click "Create role" to create the IAM role.
+
+Step 2: Create the S3 Bucket
+
+Go to the S3 service in the AWS Management Console.
+Click on "Create bucket" to start creating a new S3 bucket.
+Provide a unique bucket name and select the desired AWS region.
+Click "Next" to proceed to the "Configure options" step.
+(Optional) Configure additional settings such as versioning, logging, and tags for the bucket.
+Click "Next" to proceed to the "Set permissions" step.
+
+Step 3: Map the IAM Role to the Bucket
+
+In the "Set permissions" step of the S3 bucket creation process, expand the "Manage system permissions" section.
+Click "Edit" next to "Bucket policy".
+In the bucket policy editor, add the following policy statement:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "GrantAccessToRole",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::YOUR_ACCOUNT_ID:role/s3-access-role"
+      },
+      "Action": [
+        "s3:CreateBucket",
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": [
+        "arn:aws:s3:::YOUR_BUCKET_NAME",
+        "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+      ]
+    }
+  ]
+}
+
+Replace "YOUR_ACCOUNT_ID" with your AWS account ID and "YOUR_BUCKET_NAME" with the name of the S3 bucket you created in Step 2.
+
+Click "Save changes" to apply the bucket policy.
+That's it! You have now created an S3 bucket with role-mapped access using the AWS Management Console. 
+The specified IAM role will have the necessary permissions to create, read, and update files in the bucket.
