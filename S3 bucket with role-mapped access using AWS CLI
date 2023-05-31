@@ -1,0 +1,72 @@
+S3 bucket with role-mapped access using AWS CLI
+
+To create an S3 bucket with role-mapped access and configure it to allow programmatic creation, reading, and updating of files, you can follow these steps using the AWS Command Line Interface (CLI):
+
+Step 1: Create an IAM Role
+
+First, we need to create an IAM role that allows access to the S3 bucket. Run the following command to create the IAM role:-
+
+# aws iam create-role --role-name s3-access-role --assume-role-policy-document '{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}'
+
+Step 2: Attach the Required IAM Policy
+
+Next, we need to attach an IAM policy to the role. This policy provides the necessary permissions for S3 bucket access. 
+Run the following command to create and attach the policy to the role:
+
+# aws iam put-role-policy --role-name s3-access-role --policy-name s3-access-policy --policy-document '{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name/*",
+        "arn:aws:s3:::your-bucket-name"
+      ]
+    }
+  ]
+}'
+
+
+Make sure to replace "your-bucket-name" in the Resource field with the desired name for your S3 bucket.
+
+Step 3: Create the S3 Bucket
+
+Now, we can create the S3 bucket. Run the following command to create the bucket:
+
+# aws s3api create-bucket --bucket your-bucket-name --create-bucket-configuration LocationConstraint=your-region
+
+Replace "your-bucket-name" with the desired name for your S3 bucket and "your-region" with your desired AWS region (e.g., us-east-1).
+
+Step 4: Map the IAM Role to the Bucket
+
+Finally, we need to map the IAM role we created to the S3 bucket. 
+Run the following command to associate the IAM role with the bucket:
+
+# aws s3api put-bucket-acl --bucket your-bucket-name --grant-full-control id=your-role-arn
+
+Replace "your-bucket-name" with the actual bucket name and "your-role-arn" with the ARN of the IAM role you created earlier. 
+You can obtain the ARN using the following command:
+
+# aws iam get-role --role-name s3-access-role --query "Role.Arn" --output text
+
+That's it! You have now created an S3 bucket with role-mapped access, allowing programmatic creation, reading, and updating of files using the CLI.
