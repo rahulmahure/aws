@@ -1,0 +1,232 @@
+[root@LIAMZKORWB1UAT yum.repos.d]# cat redhat-rhui.repo
+[rhel-7-server-rhui-rpms]
+name=Red Hat Enterprise Linux 7 Server from RHUI (RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/os
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-debug-rpms]
+name=Red Hat Enterprise Linux 7 Server from RHUI (Debug RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+
+[rhel-7-server-rhui-source-rpms]
+name=Red Hat Enterprise Linux 7 Server from RHUI (Source RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-extras-rpms]
+name=Red Hat Enterprise Linux 7 Server - Extras from RHUI (RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/7Server/$basearch/extras/os
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-extras-debug-rpms]
+name=Red Hat Enterprise Linux 7 Server - Extras from RHUI (Debug RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/7Server/$basearch/extras/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-extras-source-rpms]
+name=Red Hat Enterprise Linux 7 Server - Extras from RHUI (Source RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/7Server/$basearch/extras/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-optional-rpms]
+name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-optional-debug-rpms]
+name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (Debug RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-optional-source-rpms]
+name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (Source RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-rh-common-rpms]
+name=Red Hat Enterprise Linux 7 Server - RH Common from RHUI (RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rh-common/os
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-rh-common-debug-rpms]
+name=Red Hat Enterprise Linux 7 Server - RH Common from RHUI (Debug RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rh-common/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-rh-common-source-rpms]
+name=Red Hat Enterprise Linux 7 Server - RH Common from RHUI (Source RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rh-common/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-supplementary-rpms]
+name=Red Hat Enterprise Linux 7 Server - Supplementary from RHUI (RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/supplementary/os
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-supplementary-debug-rpms]
+name=Red Hat Enterprise Linux 7 Server - Supplementary from RHUI (Debug RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/supplementary/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-rhui-supplementary-source-rpms]
+name=Red Hat Enterprise Linux 7 Server - Supplementary from RHUI (Source RPMs)
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/supplementary/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-server-rhui-rhscl-7-rpms]
+name=Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rhscl/1/os
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-server-rhui-rhscl-7-debug-rpms]
+name=Red Hat Software Collections Debug RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rhscl/1/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-server-rhui-rhscl-7-source-rpms]
+name=Red Hat Software Collections Source RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror/content/dist/rhel/rhui/server/7/$releasever/$basearch/rhscl/1/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-dotnet-rhui-debug-rpms]
+name=dotNET on RHEL Debug RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror//content/dist/rhel/rhui/server/7/$releasever/$basearch/dotnet/1/debug
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-dotnet-rhui-rpms]
+name=dotNET on RHEL RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror//content/dist/rhel/rhui/server/7/$releasever/$basearch/dotnet/1/os
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+
+[rhel-7-server-dotnet-rhui-source-rpms]
+name=dotNET on RHEL Source RPMs for Red Hat Enterprise Linux 7 Server from RHUI
+mirrorlist=https://rhui3.REGION.aws.ce.redhat.com/pulp/mirror//content/dist/rhel/rhui/server/7/$releasever/$basearch/dotnet/1/source/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify=1
+sslcacert=/etc/pki/rhui/cdn.redhat.com-chain.crt
+sslclientcert=/etc/pki/rhui/product/content-rhel7.crt
+sslclientkey=/etc/pki/rhui/content-rhel7.key
+[root@LIAMZKORWB1UAT yum.repos.d]#
